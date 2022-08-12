@@ -1,5 +1,6 @@
 import React from "react"
-import { TextInput, View, Text, TouchableOpacity, StyleSheet,  } from "react-native"
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native"
+import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
     container:{
@@ -9,6 +10,13 @@ const styles = StyleSheet.create({
         padding:32,
         backgroundColor:'#EEEEEE',
 
+    },
+
+    Logo: {
+        width:400,
+        height:150,
+        marginTop:10,
+        
     },
 
     input: {
@@ -48,6 +56,10 @@ const styles = StyleSheet.create({
 const Cadastro: React.FC = () => {
     return (
             <View style={styles.container}>
+                
+                <View>
+                    <Image style={styles.Logo} source = {Logo} />                    
+                </View>
                          
                 <TextInput style={styles.input} placeholder='Nome' />
                            
