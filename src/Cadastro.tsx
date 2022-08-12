@@ -4,27 +4,38 @@ import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
     container:{
-        display: 'flex',
-        flexGrow:1,
-        justifyContent:'center',
+        display: 'flex',               
+        flexGrow:1,        
         padding:32,
-        backgroundColor:'#EEEEEE',
+        backgroundColor:'#EAE5DB',
 
     },
 
-    Logo: {
+    logo: {        
         width:400,
         height:150,
-        marginTop:10,
-        
+        marginTop:10,       
+    },
+
+    containerLogo:{
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+    titulo:{
+        display: 'flex',
+        justifyContent: 'center',
+        fontSize: 16,
+        color: '#FF5E14',
+        fontWeight: 'bold',
     },
 
     input: {
         margin: 8,
         fontSize: 18,
         borderWidth: 1,
-        borderRadius: 4,
-        backgroundColor: '#DCDCDC',
+        borderRadius: 10,
+        backgroundColor: '#FFFFFF',
         
     },
 
@@ -40,8 +51,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 150,
         height: 30,              
-        backgroundColor: '#666666',
-        borderRadius: 4,
+        backgroundColor: '#FF5E14',
+        borderRadius: 10,
     },
 
     texto:{        
@@ -57,9 +68,11 @@ const Cadastro: React.FC = () => {
     return (
             <View style={styles.container}>
                 
-                <View>
-                    <Image style={styles.Logo} source = {Logo} />                    
+                <View style={styles.containerLogo}>
+                    <Image style={styles.logo} source = {Logo} />                    
                 </View>
+
+                <Text style={styles.titulo}>CRIE SUA CONTA</Text>
                          
                 <TextInput style={styles.input} placeholder='Nome' />
                            
@@ -75,7 +88,7 @@ const Cadastro: React.FC = () => {
                 
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ () => {} } >
-                    <Text style={styles.texto} >Criar Conta</Text>
+                    <Text style={styles.texto} >CRIAR CONTA</Text>
                     </TouchableOpacity>
                 </View>
 

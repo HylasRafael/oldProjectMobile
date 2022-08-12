@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         flexGrow:1,
         justifyContent:'center',
         padding:32,
-        backgroundColor:'#EEEEEE',
+        backgroundColor:'#EAE5DB',
 
     },
 

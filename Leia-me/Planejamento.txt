@@ -1,0 +1,27 @@
+Planejamento Back-End
+
+Tela Login
+- Vai ler as credenciais "E-mail e Senha" e executar autenticação
+- Se não for identificado ela recomenda a criação de conta. navega para a tela "Cadastro"
+- Se erro na autenticação ela recomenda esqueci a minha senha. navega para a tela "RecuperarSenha"
+- Se autenticação com exito navega para a tela "produto"
+
+Tela Cadastro
+- Ela pega os dados preenchidos e lanca na tabela
+- Se campo não preenchido demonstra mensagem de erro
+- Se todos os campos preenchidos ele navega para a tela "Login"
+
+Tela Produto
+- Le o produto do leilão da semana
+- exibe foto e descrição do produto
+- se clicado em "Entrar no Leilão" navega para a tela "TelaLance"
+
+Tela Lance
+- Le o produto do leilão da semana
+- exibe foto e descrição do produto
+- Exibe cronometro para termino do leilão 
+- exibe valor atual
+- recebe lance do usuario
+- Preenche os dados do usuario na tabela com o valor preenchido
+- altera o valor atual para o ultimo maior lance recebido
+- quando acabar contagem de tempo, desabilita botão de "Dar Lance" e exibe mensagem "Produto Vendido"
