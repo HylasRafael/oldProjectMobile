@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import Cadastro from "./src/Cadastro";
 import Login from "./src/Login";
 import Produto from "./src/Produto";
+import RecuperarSenha from "./src/RecuperarSenha"
+import NovaSenha from "./src/NovaSenha";
 
 
 const App: React.FC = () => {
@@ -13,7 +15,9 @@ const App: React.FC = () => {
           <Stack.Navigator>              
               {/*<Stack.Screen name="Cadastro" component={Cadastro} />*/}
               {/*<Stack.Screen name="Login" component={Login} />*/}
-              <Stack.Screen name="Produto" component={Produto} />
+              {/*<Stack.Screen name="Produto" component={Produto} />*/}
+              {/*<Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />*/}
+              <Stack.Screen name="NovaSenha" component={NovaSenha}/>
           </Stack.Navigator>
       </NavigationContainer>
   );
