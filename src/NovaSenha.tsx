@@ -1,5 +1,7 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react"
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native"
+import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
@@ -53,7 +55,14 @@ const styles = StyleSheet.create({
     }
 });
 
-const NovaSenha: React.FC = () => {
+type Props = NativeStackScreenProps < StackParams,'NovaSenha'>;
+
+const NovaSenha: React.FC <Props> = (props) => {
+
+    const botaoRedefinir = () => {
+        props.navigation.navigate('Login')
+    }
+
     return (
             <View style={styles.container}>
                 
@@ -62,16 +71,16 @@ const NovaSenha: React.FC = () => {
                 </View>
 
                 <View style={styles.textoSenha}>
-                    <Text>Código de Verificação</Text>
+                    <Text>CÓDIGO DE VERIFICAÇÃO</Text>
                     <TextInput style={styles.input} placeholder='Digite o Código aqui'/>
-                    <Text>Crie a Nova Senha</Text>
+                    <Text>CRIE NOVA SENHA</Text>
                     <TextInput style={styles.input} placeholder='Senha'/>
                     <TextInput style={styles.input} placeholder='Confirmar Senha'/>
                 </View>
                 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
-                    <Text style={styles.texto} >Criar Conta</Text>
+                    <TouchableOpacity style={styles.button} onPress={ botaoRedefinir } >
+                    <Text style={styles.texto} >REDEFINIR</Text>
                     </TouchableOpacity>
                 </View>
 

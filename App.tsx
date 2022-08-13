@@ -13,17 +13,27 @@ const App: React.FC = () => {
   const Stack = createNativeStackNavigator();
   return(
       <NavigationContainer>
-          <Stack.Navigator>              
-              <Stack.Screen name="Cadastro" component={Cadastro} />
-              {/*<Stack.Screen name="Login" component={Login} />*/}
-              {/*<Stack.Screen name="Produto" component={Produto} />*/}
-              {/*<Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />*/}
-              {/*<Stack.Screen name="NovaSenha" component={NovaSenha}/>*/}
-              {/*<Stack.Screen name="TelaLance" component={TelaLance}/>*/}
+          <Stack.Navigator>
+            <Stack.Screen name="Login" component={Login} />         
+              <Stack.Screen name="Cadastro" component={Cadastro} />              
+              <Stack.Screen name="Produto" component={Produto} />
+              <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+              <Stack.Screen name="NovaSenha" component={NovaSenha}/>
+              <Stack.Screen name="TelaLance" component={TelaLance}/>
           </Stack.Navigator>
       </NavigationContainer>
   );
 };
+
+export type StackParams = {
+  
+    Login: undefined,
+    Cadastro: undefined,
+    Produto: undefined,
+    RecuperarSenha: undefined,
+    NovaSenha: undefined,
+    TelaLance: undefined,    
+  };
 
 
 export default App;

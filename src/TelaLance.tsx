@@ -1,5 +1,7 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
+import { StackParams } from "../App";
 import Logo1  from '../assets/Logo-JS.png';
 
 const styles = StyleSheet.create({
@@ -55,7 +57,14 @@ const styles = StyleSheet.create({
     }
 });
 
+type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
+
 const TelaLance: React.FC = () => {
+
+    const botaoDarLance = () => {
+        //TODO enviar lance para o servidor e atualizar a tela
+    }
+
     return (
             <View style={styles.container}>
                 <Text style={styles.titulo}>Titulo do Produto</Text>
@@ -68,7 +77,7 @@ const TelaLance: React.FC = () => {
 
                 <View>
                     <Text>Valor do Lance Atual</Text>
-                    <TextInput style={styles.input}/> 
+                    <Text>DD/MM/AAAA HH:HH</Text>
                 </View>
 
                 <View >

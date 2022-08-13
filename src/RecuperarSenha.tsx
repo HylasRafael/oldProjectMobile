@@ -1,5 +1,7 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react"
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native"
+import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
@@ -53,7 +55,14 @@ const styles = StyleSheet.create({
     }
 });
 
-const RecuperarSenha: React.FC = () => {
+type Props = NativeStackScreenProps < StackParams,'Login'>;
+
+const RecuperarSenha: React.FC <Props> = (props) => {
+
+    const botaoEnviar = () => {
+        props.navigation.navigate('NovaSenha')
+    }
+    
     return (
             <View style={styles.container}>
                 
@@ -62,7 +71,7 @@ const RecuperarSenha: React.FC = () => {
                 </View>
 
                 <View style={styles.textoSenha}>
-                    <Text>Recupere sua Senha</Text>
+                    <Text>RECUPERE SUA SENHA</Text>
                 </View>
                          
                 <TextInput style={styles.input} placeholder='Nome' />
@@ -74,8 +83,8 @@ const RecuperarSenha: React.FC = () => {
                 <TextInput style={styles.input} placeholder='E-Mail'/>
                 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
-                    <Text style={styles.texto} >Enviar</Text>
+                    <TouchableOpacity style={styles.button} onPress={ botaoEnviar } >
+                    <Text style={styles.texto} >ENVIAR</Text>
                     </TouchableOpacity>
                 </View>
 

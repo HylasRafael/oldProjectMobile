@@ -1,20 +1,21 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react"
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native"
+import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
     container:{
-        display: 'flex',               
-        flexGrow:1,        
+        display: 'flex',
+        flexGrow:1,
         padding:32,
         backgroundColor:'#EAE5DB',
-
     },
 
-    logo: {        
+    logo: {
         width:400,
         height:150,
-        marginTop:10,       
+        marginTop:10,
     },
 
     containerLogo:{
@@ -36,13 +37,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         backgroundColor: '#FFFFFF',
-        
     },
 
-    containerBotao:{        
+    containerBotao:{
         margin: 10,
         alignItems: 'center',
-                       
     },
 
     button:{
@@ -50,12 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: 150,
-        height: 30,              
+        height: 30,
         backgroundColor: '#FF5E14',
         borderRadius: 10,
     },
 
-    texto:{        
+    texto:{
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
@@ -64,38 +63,43 @@ const styles = StyleSheet.create({
     }
 });
 
-const Cadastro: React.FC = () => {
+type Props = NativeStackScreenProps < StackParams,'Cadastro'>;
+
+const Cadastro: React.FC <Props> = (props) => {
+
+    const botaoCadastrar = () => {
+        props.navigation.navigate('Login')
+    }
+
     return (
             <View style={styles.container}>
-                
+
                 <View style={styles.containerLogo}>
-                    <Image style={styles.logo} source = {Logo} />                    
+                    <Image style={styles.logo} source = {Logo} />
                 </View>
 
                 <Text style={styles.titulo}>CRIE SUA CONTA</Text>
-                         
+
                 <TextInput style={styles.input} placeholder='Nome' />
-                           
+
                 <TextInput style={styles.input} placeholder='Sobrenome'/>
-                          
+
                 <TextInput style={styles.input} placeholder='CPF' />
-                
+
                 <TextInput style={styles.input} placeholder='E-Mail'/>
-                
+
                 <TextInput style={styles.input} placeholder='Senha'/>
-                
+
                 <TextInput style={styles.input} placeholder='Confirmar Senha'/>
-                
+
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
+                    <TouchableOpacity style={styles.button} onPress={ botaoCadastrar } >
                     <Text style={styles.texto} >CRIAR CONTA</Text>
                     </TouchableOpacity>
                 </View>
 
             </View>
-            
 
-            
         )
 }
 
