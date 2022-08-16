@@ -1,5 +1,5 @@
-import React from "react"
-import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native"
+import React from "react";
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Logo from '../assets/Logo.png';
 
 const styles = StyleSheet.create({

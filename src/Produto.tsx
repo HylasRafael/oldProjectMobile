@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import Logo1  from '../assets/Logo-JS.png';
 
 const styles = StyleSheet.create({
@@ -46,7 +46,12 @@ const Produto: React.FC = () => {
                 <View>
                     <Image style={styles.Logo} source = {Logo1} />
                     <Text>Descrição Aqui!</Text>
-                </View>                
+                </View>       
+
+                <View>
+                    <Text>TESTE, CARALHO!!!</Text>
+                
+                </View>         
 
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ () => {} } >
