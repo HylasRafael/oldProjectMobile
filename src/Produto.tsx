@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import Logo1  from '../assets/Logo-JS.png';
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
         flexGrow:1,
         justifyContent:'center',
         padding:32,
-        backgroundColor:'#EEEEEE',
+        backgroundColor:'#EAE5DB',
 
     },
 
@@ -38,7 +39,14 @@ const styles = StyleSheet.create({
     }
 });
 
-const Produto: React.FC = () => {
+type Props = NativeStackScreenProps < StackParams,'Produto'>;
+
+const Produto: React.FC <Props> = (props) => {
+
+    const botaoEntrarNoLeilao = () => {
+        props.navigation.navigate('TelaLance')
+    }
+
     return (
             <View style={styles.container}>
                 <Text style={styles.titulo}>Seu Produto Aqui!</Text>
@@ -54,7 +62,7 @@ const Produto: React.FC = () => {
                 </View>         
 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
+                    <TouchableOpacity style={styles.button} onPress={ botaoEntrarNoLeilao } >
                     <Text style={styles.texto} >Entrar no Leilão</Text>
                     </TouchableOpacity>
                 </View>

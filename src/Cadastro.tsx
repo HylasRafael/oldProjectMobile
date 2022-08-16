@@ -6,32 +6,40 @@ const styles = StyleSheet.create({
     container:{
         display: 'flex',
         flexGrow:1,
-        justifyContent:'center',
         padding:32,
-        backgroundColor:'#EEEEEE',
-
+        backgroundColor:'#EAE5DB',
     },
 
-    Logo: {
+    logo: {
         width:400,
         height:150,
         marginTop:10,
-        
+    },
+
+    containerLogo:{
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+    titulo:{
+        display: 'flex',
+        justifyContent: 'center',
+        fontSize: 16,
+        color: '#FF5E14',
+        fontWeight: 'bold',
     },
 
     input: {
         margin: 8,
         fontSize: 18,
         borderWidth: 1,
-        borderRadius: 4,
-        backgroundColor: '#DCDCDC',
-        
+        borderRadius: 10,
+        backgroundColor: '#FFFFFF',
     },
 
-    containerBotao:{        
+    containerBotao:{
         margin: 10,
         alignItems: 'center',
-                       
     },
 
     button:{
@@ -39,12 +47,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: 150,
-        height: 30,              
-        backgroundColor: '#666666',
-        borderRadius: 4,
+        height: 30,
+        backgroundColor: '#FF5E14',
+        borderRadius: 10,
     },
 
-    texto:{        
+    texto:{
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
@@ -53,36 +61,43 @@ const styles = StyleSheet.create({
     }
 });
 
-const Cadastro: React.FC = () => {
+type Props = NativeStackScreenProps < StackParams,'Cadastro'>;
+
+const Cadastro: React.FC <Props> = (props) => {
+
+    const botaoCadastrar = () => {
+        props.navigation.navigate('Login')
+    }
+
     return (
             <View style={styles.container}>
-                
-                <View>
-                    <Image style={styles.Logo} source = {Logo} />                    
+
+                <View style={styles.containerLogo}>
+                    <Image style={styles.logo} source = {Logo} />
                 </View>
-                         
+
+                <Text style={styles.titulo}>CRIE SUA CONTA</Text>
+
                 <TextInput style={styles.input} placeholder='Nome' />
-                           
+
                 <TextInput style={styles.input} placeholder='Sobrenome'/>
-                          
+
                 <TextInput style={styles.input} placeholder='CPF' />
-                
+
                 <TextInput style={styles.input} placeholder='E-Mail'/>
-                
+
                 <TextInput style={styles.input} placeholder='Senha'/>
-                
+
                 <TextInput style={styles.input} placeholder='Confirmar Senha'/>
-                
+
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
-                    <Text style={styles.texto} >Criar Conta</Text>
+                    <TouchableOpacity style={styles.button} onPress={ botaoCadastrar } >
+                    <Text style={styles.texto} >CRIAR CONTA</Text>
                     </TouchableOpacity>
                 </View>
 
             </View>
-            
 
-            
         )
 }
 
