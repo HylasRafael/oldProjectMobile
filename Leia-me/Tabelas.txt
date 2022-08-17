@@ -1,0 +1,27 @@
+Tela Login
+- E-mail
+- Senha
+
+Tela Cadastro
+- Id usuario**
+- Nome
+- Sobrenome
+- CPF
+- E-mail
+- Senha
+- Confirmar Senha
+
+Tela produto
+- Id Produto**
+- Nome do Produto
+- Imagem do Produto
+- Descrição do Produto
+
+Tela Lance
+- Id Produto**
+- Nome do Produto
+- Imagem do Produto
+- Descrição do Produto
+- Valor Lance Atual
+- cronometro
+- Lance efetuado
