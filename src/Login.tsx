@@ -7,6 +7,7 @@ import Logo from '../assets/Logo.png';
 const styles = StyleSheet.create({
     container:{
         display: 'flex',
+        alignItems:'center',
         flexGrow:1,
         justifyContent:'center',
         padding:32,
@@ -21,14 +22,17 @@ const styles = StyleSheet.create({
 
     input: {
         margin: 8,
+        width: 290,
+        height: 30, 
         fontSize: 18,
         borderWidth: 1,
-        borderRadius: 4,
+        borderRadius: 8,
         backgroundColor: '#FFFFFF',
     },
 
     recSenha:{
-        justifyContent: 'flex-end',
+        display:'flex',
+        alignContent: 'flex-end',
     },
 
     containerBotao:{        
@@ -40,10 +44,20 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 150,
-        height: 30,
-        backgroundColor: '#666666',
-        borderRadius: 4,
+        width: 180,
+        height: 30,              
+        backgroundColor: '#FF5E14',
+        borderRadius: 8,
+    },
+
+    button1:{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 100,
+        height: 30,              
+        backgroundColor: '#6EB8B3',
+        borderRadius: 15,
     },
 
     texto:{
@@ -87,7 +101,7 @@ const Login: React.FC <Props>  = (props) => {
                 </View>
 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ botaoLogin } >
+                    <TouchableOpacity style={styles.button1} onPress={ botaoLogin } >
                     <Text style={styles.texto} >LOGIN</Text>
                     </TouchableOpacity>
                 </View>

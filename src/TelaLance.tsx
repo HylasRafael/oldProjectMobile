@@ -54,7 +54,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-    }
+    },
+
+    titulo:{        
+        fontSize: 19,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'black',
+    },   
+    
 });
 
 type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
@@ -72,8 +81,10 @@ const TelaLance: React.FC = () => {
                 <View style={styles.containerImagem}>
                     <Image style={styles.Image} source = {Logo1} />                    
                 </View>
-
-                <Text>Descrição do Produto!</Text>
+                
+                <View>
+                    <Text>Descrição do Produto!</Text>
+                </View>
 
                 <View>
                     <Text>Valor do Lance Atual</Text>

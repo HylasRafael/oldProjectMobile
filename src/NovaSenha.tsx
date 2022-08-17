@@ -7,6 +7,7 @@ import Logo from '../assets/Logo.png';
 const styles = StyleSheet.create({
     container:{
         display: 'flex',
+        alignItems:'center',
         flexGrow:1,
         justifyContent:'center',
         padding:32,
@@ -23,10 +24,12 @@ const styles = StyleSheet.create({
 
     input: {
         margin: 8,
+        width: 290,
+        height: 30, 
         fontSize: 18,
         borderWidth: 1,
-        borderRadius: 4,
-        backgroundColor: '#DCDCDC',
+        borderRadius: 8,
+        backgroundColor: '#FFFFFF',
         
     },
 
@@ -42,8 +45,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 150,
         height: 30,              
-        backgroundColor: '#666666',
-        borderRadius: 4,
+        backgroundColor: '#224A49',
+        borderRadius: 8,
     },
 
     texto:{        
@@ -52,7 +55,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-    }
+    },
+
+    
 });
 
 type Props = NativeStackScreenProps < StackParams,'NovaSenha'>;
