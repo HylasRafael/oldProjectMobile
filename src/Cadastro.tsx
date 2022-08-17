@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexGrow:1,
         padding:32,
-        backgroundColor:'#EAE5DB',
+        backgroundColor:'#FFFFFF',
     },
 
     logo: {

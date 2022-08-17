@@ -59,7 +59,7 @@ const Produto: React.FC <Props> = (props) => {
 
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ botaoEntrarNoLeilao } >
-                    <Text style={styles.texto} >Entrar no Leilão</Text>
+                    <Text style={styles.texto} >LEILÃO</Text>
                     </TouchableOpacity>
                 </View>
                 

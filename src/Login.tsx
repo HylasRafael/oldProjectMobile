@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderWidth: 1,
         borderRadius: 4,
-        backgroundColor: '#DCDCDC',
+        backgroundColor: '#FFFFFF',
     },
 
     recSenha:{
