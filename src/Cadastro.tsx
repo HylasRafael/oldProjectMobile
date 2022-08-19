@@ -5,9 +5,11 @@ import Logo from '../assets/Logo.png';
 const styles = StyleSheet.create({
     container:{
         display: 'flex',
+        alignItems:'center',
         flexGrow:1,
+        justifyContent:'center',
         padding:32,
-        backgroundColor:'#FFFFFF',
+        backgroundColor:'#EAE5DB',
     },
 
     logo: {
@@ -31,9 +33,11 @@ const styles = StyleSheet.create({
 
     input: {
         margin: 8,
+        width: 290,
+        height: 30, 
         fontSize: 18,
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 8,
         backgroundColor: '#FFFFFF',
     },
 
@@ -46,10 +50,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 150,
-        height: 30,
+        width: 180,
+        height: 30,              
         backgroundColor: '#FF5E14',
-        borderRadius: 10,
+        borderRadius: 8,
     },
 
     texto:{
