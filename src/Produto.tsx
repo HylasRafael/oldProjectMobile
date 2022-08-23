@@ -1,7 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
-import Logo1  from '../assets/Logo-JS.png';
+import { StackParams } from "../App";
+import Logo1  from '../assets/Logo.png';
+import fotoProduto from '../assets/vitrola.png';
 
 const styles = StyleSheet.create({
     container:{
@@ -10,13 +12,19 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding:32,
         backgroundColor:'#EAE5DB',
+        alignItems: 'center',
 
     },
 
-    Logo: {
-        width:400,
-        height:150,
-        marginTop:10,
+    titulo: {
+        fontWeight: 'bold',
+
+    },
+
+    logo: {
+        width: 400,
+        height: 150,
+        marginTop: 10,
         
     },
 
@@ -28,6 +36,17 @@ const styles = StyleSheet.create({
         height: 30,              
         backgroundColor: '#666666',
         borderRadius: 4,
+    },
+
+    button: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 180,
+            height: 30,              
+            backgroundColor: '#FF5E14',
+            borderRadius: 8,
+
     },
 
     texto:{        
@@ -52,14 +71,13 @@ const Produto: React.FC <Props> = (props) => {
                 <Text style={styles.titulo}>Seu Produto Aqui!</Text>
 
                 <View>
-                    <Image style={styles.Logo} source = {Logo1} />
+                    <Image style={styles.logo} source = {Logo1} />
                     <Text>Descrição Aqui!</Text>
-                </View>       
+                </View>   
 
                 <View>
-                    <Text>TESTE, CARALHO!!!</Text>
-                
-                </View>         
+                    <Image style={styles.fotoProduto} source={fotoProduto} />
+                </View>            
 
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ botaoEntrarNoLeilao } >
