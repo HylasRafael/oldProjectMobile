@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
-import fotoProduto from '../assets/vitrola.png';
+import Vitrola from '../assets/vitrola.jpg';
 
 const styles = StyleSheet.create({
     container:{
@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
 
     titulo: {
         fontWeight: 'bold',
+        fontSize: 24,
 
     },
 
     logo: {
         width: 400,
         height: 150,
-        marginTop: 10,
         
     },
 
@@ -36,6 +36,13 @@ const styles = StyleSheet.create({
         height: 30,              
         backgroundColor: '#666666',
         borderRadius: 4,
+    },
+
+    fotoProduto: {
+        width: 500,
+        height: 600,
+        margin: 10,
+
     },
 
     button: {
@@ -68,15 +75,15 @@ const Produto: React.FC <Props> = (props) => {
 
     return (
             <View style={styles.container}>
-                <Text style={styles.titulo}>Seu Produto Aqui!</Text>
+                <Image style={styles.logo} source = {Logo1} />
 
                 <View>
-                    <Image style={styles.logo} source = {Logo1} />
+                    <Text style={styles.titulo}>Seu Produto Aqui!</Text>
                     <Text>Descrição Aqui!</Text>
                 </View>   
 
                 <View>
-                    <Image style={styles.fotoProduto} source={fotoProduto} />
+                    <Image style={styles.fotoProduto} source={Vitrola} />
                 </View>            
 
                 <View style={styles.containerBotao} >
