@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
 
     },
 
+    //imagem
+
     button: {
             display: 'flex',
             alignItems: 'center',
