@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
-import fotoProduto from '../assets/vitrola.jpg';
+import fotoProduto from '../assets/vitrola.png';
 
 const styles = StyleSheet.create({
     container:{
