@@ -55,6 +55,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+        
+    },
+
+    textoSenha: {
+        display:'flex',
+        alignContent: 'flex-end',
+        fontWeight: 'bold'
     },
 
     
@@ -75,10 +82,10 @@ const NovaSenha: React.FC <Props> = (props) => {
                     <Image style={styles.Logo} source = {Logo} />                    
                 </View>
 
-                <View style={styles.textoSenha}>
-                    <Text>CÓDIGO DE VERIFICAÇÃO</Text>
+                <View>
+                    <Text style={styles.textoSenha}>CÓDIGO DE VERIFICAÇÃO</Text>
                     <TextInput style={styles.input} placeholder='Digite o Código aqui'/>
-                    <Text>CRIE NOVA SENHA</Text>
+                    <Text style={styles.textoSenha}>CRIE NOVA SENHA</Text>
                     <TextInput style={styles.input} placeholder='Senha'/>
                     <TextInput style={styles.input} placeholder='Confirmar Senha'/>
                 </View>

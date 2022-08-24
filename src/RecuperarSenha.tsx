@@ -55,7 +55,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-    }
+    },
+    textoSenha: {
+        display:'flex',
+        alignContent: 'flex-end',
+        fontWeight: 'bold'
+    },
 });
 
 type Props = NativeStackScreenProps < StackParams,'Login'>;
@@ -73,8 +78,8 @@ const RecuperarSenha: React.FC <Props> = (props) => {
                     <Image style={styles.Logo} source = {Logo} />                    
                 </View>
 
-                <View style={styles.textoSenha}>
-                    <Text>RECUPERE SUA SENHA</Text>
+                <View >
+                    <Text style={styles.textoSenha}>RECUPERE SUA SENHA</Text>
                 </View>
                          
                 <TextInput style={styles.input} placeholder='Nome' />

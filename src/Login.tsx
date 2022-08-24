@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     recSenha:{
         display:'flex',
         alignContent: 'flex-end',
+        fontWeight: 'bold'
     },
 
     containerBotao:{        
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+        
     }
 });
 

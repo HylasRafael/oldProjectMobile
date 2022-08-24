@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
-import Logo1  from '../assets/Logo-JS.png';
+import Logo1  from '../assets/Logo.png';
 
 const styles = StyleSheet.create({
     
@@ -16,12 +16,7 @@ const styles = StyleSheet.create({
 
     },
 
-    containerImagem:{
-        backgroundColor: '#FFFFFF'
-
-    },
-
-    Image: {
+    image: {
         width:400,
         height:150,
         marginTop:10,
@@ -62,6 +57,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'black',
+        
     },   
     
 });
@@ -71,7 +67,7 @@ type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 const TelaLance: React.FC = () => {
 
     const botaoDarLance = () => {
-        //TODO enviar lance para o servidor e atualizar a tela
+        //TODO enviar lance para o servidor e atualizar a tela      
     }
 
     return (
@@ -79,7 +75,7 @@ const TelaLance: React.FC = () => {
                 <Text style={styles.titulo}>Titulo do Produto</Text>
 
                 <View style={styles.containerImagem}>
-                    <Image style={styles.Image} source = {Logo1} />                    
+                    <Image style={styles.image} source = {Logo1} />                    
                 </View>
                 
                 <View>
