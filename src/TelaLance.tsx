@@ -1,8 +1,10 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
-import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
+import React, { useState } from "react";
+import {SafeAreaView, TextInput, View, Text, TouchableOpacity, StyleSheet, Image, Alert, TextInputComponent, } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
+import CountDown from 'react-native-countdown-component'
+
 
 const styles = StyleSheet.create({
     
@@ -13,13 +15,21 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding:32,
         backgroundColor:'#EAE5DB',
+        
 
     },
 
     image: {
+        
         width:400,
-        height:150,
-        marginTop:10,
+        height:130,
+        marginTop:5,
+        borderColor: 'black',
+        borderRadius:10,
+        flex: 1,
+        paddingTop: 10,
+        backgroundColor: '#ecf0f1', 
+        
         
         
     },
@@ -58,16 +68,39 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'black',
         
-    },   
+    },
+    
+    timerTitulo:{
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        padding: 20,        
+    },
+
+    timer:{
+        display:'flex',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    
+    textoLance:{
+        
+        
+    },
     
 });
 
 type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 
 const TelaLance: React.FC = () => {
+    
+    const [lanceEnviado, setLanceEnviado] = useState('');
+    const [lanceAtual, setLanceAtual] = useState("R$100,00")
 
     const botaoDarLance = () => {
-        //TODO enviar lance para o servidor e atualizar a tela      
+        alert ('Seu lançe foi registrado no valor de ' + lanceEnviado)
+             
     }
 
     return (
@@ -75,25 +108,36 @@ const TelaLance: React.FC = () => {
                 <Text style={styles.titulo}>Titulo do Produto</Text>
 
                 <View style={styles.containerImagem}>
-                    <Image style={styles.image} source = {Logo1} />                    
+                    <Image style={styles.image} source = {Logo1} />
+                    <View>
+                        <Text>Descrição do Produto!</Text>
+                    </View>                  
                 </View>
                 
-                <View>
-                    <Text>Descrição do Produto!</Text>
-                </View>
+                
 
-                <View>
-                    <Text>Valor do Lance Atual</Text>
-                    <Text>DD/MM/AAAA HH:HH</Text>
+                <View style={styles.timer}>
+                    <Text>Ultimo lance foi realizado na data 'x' no valor de: 'X' </Text>
+                    
+                    <Text>Leilão Termina em:</Text>
+                    <CountDown until={10000}
+                        timeToShow={['D', 'H', 'M', 'S']}
+                        timeLabels={{d: 'Dias', h: 'Horas', m: 'Minutos', s: 'Segundos'}}
+                        onFinish={() => alert('Terminado!')}
+
+                        //pegar a hora atual e subitrair do total estipulado
+                        
+                    />
+                    
                 </View>
 
                 <View >
-                    <Text>Seu Lance</Text>
-                    <TextInput style={styles.input}/> 
+                    <Text style={styles.textoLance}>Seu Lance</Text>
+                    <TextInput style={styles.input} onChangeText={setLanceEnviado}/> 
                 </View>
 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ () => {} } >
+                    <TouchableOpacity style={styles.button} onPress={ botaoDarLance } >
                     <Text style={styles.texto} >DAR LANCE</Text>
                     </TouchableOpacity>
                 </View>
