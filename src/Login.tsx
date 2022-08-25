@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react"
+import React, { useState } from "react"
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native"
 import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
@@ -75,13 +75,27 @@ type Props = NativeStackScreenProps < StackParams,'Login'>;
 
 const Login: React.FC <Props>  = (props) => {    
 
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const loginAdm = 'admin'
+    const senhaAdm = '123'
+    
+    const botaoLogin = () => {        
+        
+        const loginCorreto = (email === 'admin') && (senha === '123')
+        props.navigation.navigate('CadastroProduto')
+        
+    
+
+    
+
+        
+    }
+
     const botaoCriarConta = () => {
         props.navigation.navigate('Cadastro')
     }
 
-    const botaoLogin = () => {
-        props.navigation.navigate('Produto')
-    }
     
     const botaoRecuperarSenha = () => {
         props.navigation.navigate('RecuperarSenha')

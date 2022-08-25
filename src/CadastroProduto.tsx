@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
-import Vitrola from '../assets/vitrola.jpg';
+import logo from '../assets/Logo-JS.png';
 
 const styles = StyleSheet.create({
     container:{
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     },
 
     fotoProduto: {
-        width: 300,
-        height: 300,
+        width: 400,
+        height: 150,
         margin: 10,
 
     },
@@ -58,16 +58,6 @@ const styles = StyleSheet.create({
 
     },
 
-    buttonCadastrar:{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 180,
-            height: 30,              
-            backgroundColor: '#FF5E14',
-            borderRadius: 8,
-    },
-
     texto:{        
         fontSize: 16,
         lineHeight: 21,
@@ -79,36 +69,31 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
-const Produto: React.FC <Props> = (props) => {
-
-    const botaoEntrarNoLeilao = () => {
-        props.navigation.navigate('TelaLance')
-    }
+const CadastroProduto: React.FC <Props> = (props) => {
 
     const botaoCadastrar = () => {
-        props.navigation.navigate('CadastroProduto')
+        alert ('Produto Cadastrado')
+        props.navigation.navigate('Produto')
     }
 
     return (
             <View style={styles.container}>
                 <Image style={styles.logo} source = {Logo1} />
 
+
                 <View>
-                    <Text style={styles.titulo}>Seu Produto Aqui!</Text>
-                    <Text>Descrição Aqui!</Text>
+                    <Text style={styles.titulo}>Seu Produto Aqui!</Text> {/*Descrição sera lançada para o backend*/} 
                     <View>
-                        <Image style={styles.fotoProduto} source={Vitrola} />
-                    </View>   
+                        <Image style={styles.fotoProduto} source={logo} /> {/*Foto será colocada para o back end*/}
+                    </View>
+                    <Text>Descrição Aqui!</Text> {/*Descrição será lançada para o backend */}
                 </View>   
 
-                         
+                            
 
                 <View style={styles.containerBotao} >
-                    <TouchableOpacity style={styles.button} onPress={ botaoEntrarNoLeilao } >
-                    <Text style={styles.texto} >LEILÃO</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonCadastrar} onPress={ botaoCadastrar } >
-                    <Text style={styles.texto} >CADASTRAR PRODUTO</Text>
+                    <TouchableOpacity style={styles.button} onPress={ botaoCadastrar } >
+                    <Text style={styles.texto} >CADASTRAR</Text>
                     </TouchableOpacity>
                 </View>
                 
@@ -116,4 +101,4 @@ const Produto: React.FC <Props> = (props) => {
         )
 }
 
-export default Produto
+export default CadastroProduto

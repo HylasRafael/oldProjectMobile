@@ -7,6 +7,7 @@ import Produto from "./src/Produto";
 import RecuperarSenha from "./src/RecuperarSenha"
 import NovaSenha from "./src/NovaSenha";
 import TelaLance from "./src/TelaLance";
+import CadastroProduto from "./src/CadastroProduto";
 
 
 const App: React.FC = () => {
@@ -14,12 +15,13 @@ const App: React.FC = () => {
   return(
       <NavigationContainer>
           <Stack.Navigator>
-             {/*  <Stack.Screen name="Login" component={Login}/>
+              <Stack.Screen name="Login" component={Login}/>
               <Stack.Screen name="Cadastro" component={Cadastro}/>             
               <Stack.Screen name="Produto" component={Produto} />
               <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-              <Stack.Screen name="NovaSenha" component={NovaSenha}/> */}
+              <Stack.Screen name="NovaSenha" component={NovaSenha}/> 
               <Stack.Screen name="TelaLance" component={TelaLance}/>
+              <Stack.Screen name="CadastroProduto" component={CadastroProduto}/>
           </Stack.Navigator>
       </NavigationContainer>
   );
@@ -32,7 +34,8 @@ export type StackParams = {
     Produto: undefined,
     RecuperarSenha: undefined,
     NovaSenha: undefined,
-    TelaLance: undefined,    
+    TelaLance: undefined, 
+    CadastroProduto: undefined,
   };
 
 
