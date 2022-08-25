@@ -84,12 +84,6 @@ const Login: React.FC <Props>  = (props) => {
         
         const loginCorreto = (email === 'admin') && (senha === '123')
         props.navigation.navigate('CadastroProduto')
-        
-    
-
-    
-
-        
     }
 
     const botaoCriarConta = () => {
