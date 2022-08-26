@@ -4,7 +4,6 @@ import axios from "axios";
 import { View, Text, TouchableOpacity, StyleSheet, Image, TextInput  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
-import logo from '../assets/Logo-JS.png';
 
 const styles = StyleSheet.create({
     container:{

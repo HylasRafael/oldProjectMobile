@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react"
-import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native"
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image, Alert  } from "react-native"
 import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
 
@@ -68,22 +68,50 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'white',
         
-    }
+    },
+
+    Sucesso: {
+		backgroundColor: '#ff9',
+		color: '#990',
+		padding: 20,
+		marginBottom: 20,
+		borderRadius: 5,
+		fontSize: 16,
+	},
+
+    Erro: {
+		backgroundColor: '#ff9',
+		color: '#990',
+		padding: 20,
+		marginBottom: 20,
+		borderRadius: 5,
+		fontSize: 16,
+	},
 });
 
 type Props = NativeStackScreenProps < StackParams,'Login'>;
 
-const Login: React.FC <Props>  = (props) => {    
+const Login: React.FC <Props>  = (props) => {
+    
+    const [sucesso, setSucesso] = useState(false)
+    const [erro, setErro] = useState(false)
 
     const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const loginAdm = 'admin'
-    const senhaAdm = '123'
+    const [senha, setSenha] = useState('')   
+
     
     const botaoLogin = () => {        
         
-        const loginCorreto = (email === 'admin') && (senha === '123')
-        props.navigation.navigate('CadastroProduto')
+        if ((email === 'Admin') && (senha === '123')) {
+            
+            props.navigation.navigate('Produto')
+        }
+        else {
+            setErro(true)
+        }
+
+        
+        
     }
 
     const botaoCriarConta = () => {
@@ -99,12 +127,24 @@ const Login: React.FC <Props>  = (props) => {
     return (
             <View style={styles.container}>
 
+                {
+                    sucesso && 
+                    <Text style={styles.Sucesso}>Login Correto!</Text>
+                }
+
+                {
+                    erro && 
+                    <Text style={styles.Erro}>Login Incorreto!</Text>
+                }
+
+
+
                 <View>
                     <Image style={styles.Logo} source = {Logo} />
                 </View>
 
-                <TextInput style={styles.input} placeholder='E-Mail'/>
-                <TextInput style={styles.input} placeholder='Senha'/>
+                <TextInput style={styles.input} placeholder='E-Mail' onChangeText={setEmail}/>
+                <TextInput style={styles.input} placeholder='Senha' onChangeText={setSenha}/>
 
                 <View>
                     <TouchableOpacity style ={styles.recSenha} onPress={ botaoRecuperarSenha }>Esqueci Minha Senha</TouchableOpacity>
