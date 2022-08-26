@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
+import React, { useState } from "react";
+import axios from "axios";
+import { View, Text, TouchableOpacity, StyleSheet, Image, TextInput  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
 import logo from '../assets/Logo-JS.png';
@@ -26,6 +27,28 @@ const styles = StyleSheet.create({
         width: 400,
         height: 150,
         
+    },
+
+    input: {
+        margin: 8,
+        width: 290,
+        height: 30, 
+        fontSize: 18,
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: '#FFFFFF',
+    },
+
+    inputDescricao: {
+        margin: 8,
+        width: 290,
+        height: 100, 
+        fontSize: 18,
+        borderWidth: 1,
+        borderRadius: 8,
+        backgroundColor: '#FFFFFF',
+        textAlign: 'left',
+
     },
 
     containerBotao:{
@@ -69,11 +92,31 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
+const [nome, setNome] = useState ('')
+
 const CadastroProduto: React.FC <Props> = (props) => {
 
-    const botaoCadastrar = () => {
-        alert ('Produto Cadastrado')
-        props.navigation.navigate('Produto')
+    
+
+    const botaoCadastrar = () => {   
+        const item = { 
+            nome: nome,
+            descricao: 'xxx',
+            preco: 1253,
+        }
+
+        axios.post('http://10.60.46.43:4000/produtos', item)
+                .then(res => {
+                    if (res.status == 201) {
+                        alert ('Produto Cadastrado')
+                        props.navigation.navigate('Produto')
+                    }
+
+                    else {
+                        alert ('Tente novamente')
+                    }
+                })
+                .catch((res) => console.log(res))
     }
 
     return (
@@ -82,14 +125,11 @@ const CadastroProduto: React.FC <Props> = (props) => {
 
 
                 <View>
-                    <Text style={styles.titulo}>Seu Produto Aqui!</Text> {/*Descrição sera lançada para o backend*/} 
-                    <View>
-                        <Image style={styles.fotoProduto} source={logo} /> {/*Foto será colocada para o back end*/}
-                    </View>
-                    <Text>Descrição Aqui!</Text> {/*Descrição será lançada para o backend */}
+                    <TextInput style={styles.input} placeholder='Nome do Produto' onChangeText={setNome}/>
+                    <TextInput style={styles.input} placeholder='Preço'/>
+                    {/* Inserir botão para carregar imagem */}
+                    <TextInput style={styles.inputDescricao} placeholder='Descrição do Produto'/>
                 </View>   
-
-                            
 
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ botaoCadastrar } >

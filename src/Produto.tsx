@@ -80,18 +80,6 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
-type Item = {
-	id?: number
-	nome: string
-	descricao: string
-    preco: number
-}
-
-
-
-axios.get<Item[]>('http://10.60.46.43:4000/produtos')
-		.then(res => console.log(res.data))
-		.catch((res) => console.log(res.data))
 
 const Produto: React.FC <Props> = (props) => {
 
