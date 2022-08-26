@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import axios from "axios";
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
@@ -79,6 +80,19 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
+type Item = {
+	id?: number
+	nome: string
+	descricao: string
+    preco: number
+}
+
+
+
+axios.get<Item[]>('http://10.60.46.43:4000/produtos')
+		.then(res => console.log(res.data))
+		.catch((res) => console.log(res.data))
+
 const Produto: React.FC <Props> = (props) => {
 
     const botaoEntrarNoLeilao = () => {
@@ -106,10 +120,7 @@ const Produto: React.FC <Props> = (props) => {
                 <View style={styles.containerBotao} >
                     <TouchableOpacity style={styles.button} onPress={ botaoEntrarNoLeilao } >
                     <Text style={styles.texto} >LEILÃO</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonCadastrar} onPress={ botaoCadastrar } >
-                    <Text style={styles.texto} >CADASTRAR PRODUTO</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity>                    
                 </View>
                 
             </View>
