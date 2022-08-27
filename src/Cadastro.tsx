@@ -29,8 +29,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         fontSize: 16,
-        color: '#FF5E14',
         fontWeight: 'bold',
+        textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 2},
+        textShadowRadius:1,
+        color: '#ff8c00',
+        
     },
 
     input: {

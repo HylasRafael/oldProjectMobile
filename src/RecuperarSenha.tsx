@@ -55,11 +55,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+        
     },
     textoSenha: {
         display:'flex',
         alignContent: 'flex-end',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 2},
+        textShadowRadius:1,
+        color: '#ff8c00',
+        
     },
 });
 

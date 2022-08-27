@@ -104,7 +104,7 @@ const Login: React.FC <Props>  = (props) => {
         
         if ((email === 'Admin') && (senha === '123')) {
             
-            props.navigation.navigate('Produto')
+            props.navigation.navigate('CadastroProduto')
         }
         else {
             setErro(true)

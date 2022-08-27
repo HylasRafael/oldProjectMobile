@@ -21,7 +21,7 @@ const App: React.FC = () => {
               <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
               <Stack.Screen name="NovaSenha" component={NovaSenha}/> 
               <Stack.Screen name="TelaLance" component={TelaLance}/>
-              {/* <Stack.Screen name="CadastroProduto" component={CadastroProduto}/> */}
+              <Stack.Screen name="CadastroProduto" component={CadastroProduto}/>
           </Stack.Navigator>
       </NavigationContainer>
   );

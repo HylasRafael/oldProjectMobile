@@ -91,10 +91,10 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
-const [nome, setNome] = useState ('')
+
 
 const CadastroProduto: React.FC <Props> = (props) => {
-
+    const [nome, setNome] = useState ('')
     
 
     const botaoCadastrar = () => {   
