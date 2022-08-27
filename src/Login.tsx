@@ -1,8 +1,11 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image, Alert  } from "react-native"
 import { StackParams } from "../App";
 import Logo from '../assets/Logo.png';
+import Usuario from "./model/Usuario";
 
 const styles = StyleSheet.create({
     container:{
@@ -97,21 +100,57 @@ const Login: React.FC <Props>  = (props) => {
     const [erro, setErro] = useState(false)
 
     const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')   
+    const [senha, setSenha] = useState('')
+
+    useEffect(() => {
+        AsyncStorage.getItem('USUARIO_LOGADO')
+        .then(usuarioLogadoJson => {
+            if (usuarioLogadoJson) {
+                const usuarioLogado = JSON.parse(usuarioLogadoJson);
+                if (usuarioLogado.isAdmin) {
+                    props.navigation.navigate('CadastroProduto')
+                } else {
+                    props.navigation.navigate('Produto')
+                }
+            }
+        })
+    }, []);
 
     
-    const botaoLogin = () => {        
-        
-        if ((email === 'Admin') && (senha === '123')) {
-            
-            props.navigation.navigate('CadastroProduto')
-        }
-        else {
+    const botaoLogin = () => {
+         
+         //TODO: Conectar no servidor e receber a resposta (usuarioLogado)
+
+ 
+         const servidorLoginSucesso = ((email === 'Admin') && (senha === '123'));
+         const usuarioLogado: Usuario = ((email === 'Admin') && (senha === '123')) ? {
+            nome: 'Administrador',
+            email: "Admin",
+            senha: "123",
+            cpf: "12345678900",
+            isAdmin: true
+        } : {
+            nome: 'Jose Paulo',
+            email: "jose@paulo.com",
+            senha: "123",
+            cpf: "12345678900",
+            isAdmin: false
+        };
+
+        if (servidorLoginSucesso) {
+
+            AsyncStorage.setItem('USUARIO_LOGADO', JSON.stringify(usuarioLogado));
+            // LOGOUT:
+            // AsyncStorage.clear();
+
+            if (usuarioLogado.isAdmin) {
+                props.navigation.navigate('CadastroProduto')
+            } else {
+                props.navigation.navigate('Produto')
+            }
+        } else {
             setErro(true)
         }
-
-        
-        
     }
 
     const botaoCriarConta = () => {
@@ -126,7 +165,6 @@ const Login: React.FC <Props>  = (props) => {
 
     return (
             <View style={styles.container}>
-
                 {
                     sucesso && 
                     <Text style={styles.Sucesso}>Login Correto!</Text>
