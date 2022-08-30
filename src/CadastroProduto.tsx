@@ -95,7 +95,7 @@ type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
 const CadastroProduto: React.FC <Props> = (props) => {
     const [nome, setNome] = useState ('')
-    const [preco, setPreco] = useState <Number> ()
+    const [preco, setPreco] = useState ('')
     const [descricao, setDescricao] = useState ('')
     
 
