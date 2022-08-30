@@ -95,13 +95,15 @@ type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
 const CadastroProduto: React.FC <Props> = (props) => {
     const [nome, setNome] = useState ('')
+    const [preco, setPreco] = useState <Number> ()
+    const [descricao, setDescricao] = useState ('')
     
 
     const botaoCadastrar = () => {   
         const item = { 
             nome: nome,
-            descricao: 'xxx',
-            preco: 1253,
+            preco: preco,
+            descricao: descricao,
         }
 
         axios.post('http://10.60.46.43:4000/produtos', item)
@@ -125,9 +127,9 @@ const CadastroProduto: React.FC <Props> = (props) => {
 
                 <View>
                     <TextInput style={styles.input} placeholder='Nome do Produto' onChangeText={setNome}/>
-                    <TextInput style={styles.input} placeholder='Preço'/>
+                    <TextInput style={styles.input} placeholder='Preço' onChangeText={setPreco}/>
                     {/* Inserir botão para carregar imagem */}
-                    <TextInput style={styles.inputDescricao} placeholder='Descrição do Produto'/>
+                    <TextInput style={styles.inputDescricao} placeholder='Descrição do Produto' onChangeText={setDescricao}/>
                 </View>   
 
                 <View style={styles.containerBotao} >
