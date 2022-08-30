@@ -131,17 +131,17 @@ const Login: React.FC <Props>  = (props) => {
             isAdmin: true
         } : {
             nome: 'Jose Paulo',
-            email: "jose@paulo.com",
+            email: "User",
             senha: "123",
             cpf: "12345678900",
             isAdmin: false
         };
 
-        if (servidorLoginSucesso) {
+        if (usuarioLogado) {
 
             AsyncStorage.setItem('USUARIO_LOGADO', JSON.stringify(usuarioLogado));
             // LOGOUT:
-            // AsyncStorage.clear();
+            AsyncStorage.clear();
 
             if (usuarioLogado.isAdmin) {
                 props.navigation.navigate('CadastroProduto')
