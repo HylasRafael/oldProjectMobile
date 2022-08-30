@@ -83,20 +83,21 @@ type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
 const Produto: React.FC <Props> = (props) => {
 
+    
+
+    
+
     const botaoEntrarNoLeilao = () => {
         props.navigation.navigate('TelaLance')
     }
 
-    const botaoCadastrar = () => {
-        props.navigation.navigate('CadastroProduto')
-    }
-
+    
     return (
             <View style={styles.container}>
                 <Image style={styles.logo} source = {Logo1} />
 
                 <View>
-                    <Text style={styles.titulo}>Seu Produto Aqui!</Text>
+                    <Text style={styles.titulo}>'Seu Produto Aqui'</Text>
                     <Text>Descrição Aqui!</Text>
                     <View>
                         <Image style={styles.fotoProduto} source={Vitrola} />
