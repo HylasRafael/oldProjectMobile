@@ -96,10 +96,11 @@ type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 const TelaLance: React.FC = () => {
     
     const [lanceEnviado, setLanceEnviado] = useState('');
-    const [lanceAtual, setLanceAtual] = useState()
+    
 
     const botaoDarLance = () => {
         alert ('Seu lançe foi registrado no valor de ' + lanceEnviado)
+        
              
     }
 
@@ -117,10 +118,11 @@ const TelaLance: React.FC = () => {
                 
 
                 <View style={styles.timer}>
-                    <Text>Ultimo lance foi realizado na data 'x' no valor de: {lanceAtual} </Text>
+                    <Text>Ultimo lance foi realizado na data 'x' no valor de: {} </Text>
+                    <TextInput style={styles.input}onChangeText={setLanceEnviado}/> 
                     
                     <Text>Leilão Termina em:</Text>
-                    <CountDown until={10000}
+                    <CountDown until={10}
                         timeToShow={['D', 'H', 'M', 'S']}
                         timeLabels={{d: 'Dias', h: 'Horas', m: 'Minutos', s: 'Segundos'}}
                         onFinish={() => alert('Terminado!')}
