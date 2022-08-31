@@ -148,4 +148,6 @@ const TelaLance: React.FC = () => {
         )
 }
 
+
+
 export default TelaLance
