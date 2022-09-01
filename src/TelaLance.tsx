@@ -51,14 +51,16 @@ const styles = StyleSheet.create({
         height: 30,              
         backgroundColor: '#6EB8B3',
         borderRadius: 4,
+        textDecorationColor: 'red',
     },
 
-    texto:{        
+    texto:{  
+        textAlign: 'center',      
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'white',
+        color: 'black',
     },
 
     titulo:{        
@@ -82,27 +84,23 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontWeight: 'bold',
-    },
-    
-    textoLance:{
-        
-        
-    },
+    },   
     
 });
 
 type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 
-const TelaLance: React.FC = () => {
+const TelaLance: React.FC<Props> = (props) => {
     
     const [lanceEnviado, setLanceEnviado] = useState('');
     
 
     const botaoDarLance = () => {
-        alert ('Seu lançe foi registrado no valor de ' + lanceEnviado)
-        
-             
+        alert ('Seu lançe foi registrado no valor de R$' + lanceEnviado)
+         
     }
+
+   
 
     return (
             <View style={styles.container}>
@@ -114,15 +112,15 @@ const TelaLance: React.FC = () => {
                         <Text>Descrição do Produto!</Text>
                     </View>                  
                 </View>
-                
-                
 
-                <View style={styles.timer}>
-                    <Text>Ultimo lance foi realizado na data 'x' no valor de: {} </Text>
-                    <TextInput style={styles.input}onChangeText={setLanceEnviado}/> 
+                <Text style={styles.texto}>Ultimo lance foi realizado na data 'x' no valor de: </Text>
+                <Text style={styles.texto}>R${lanceEnviado}</Text>
+
+                <View style={styles.timer}>                    
                     
-                    <Text>Leilão Termina em:</Text>
-                    <CountDown until={10}
+                    
+                    <Text style={styles.texto}>Leilão Termina em:</Text>
+                    <CountDown until={60}
                         timeToShow={['D', 'H', 'M', 'S']}
                         timeLabels={{d: 'Dias', h: 'Horas', m: 'Minutos', s: 'Segundos'}}
                         onFinish={() => alert('Terminado!')}
@@ -134,7 +132,7 @@ const TelaLance: React.FC = () => {
                 </View>
 
                 <View >
-                    <Text style={styles.textoLance}>Seu Lance</Text>
+                    <Text style={styles.texto}>Seu Lance</Text>
                     <TextInput style={styles.input} onChangeText={setLanceEnviado}/> 
                 </View>
 
