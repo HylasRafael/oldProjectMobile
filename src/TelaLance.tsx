@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         height: 30,              
         backgroundColor: '#6EB8B3',
         borderRadius: 4,
-        textDecorationColor: 'red',
+        
     },
 
     texto:{  
