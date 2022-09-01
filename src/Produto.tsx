@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps < StackParams,'Produto'>;
 
 
-const Produto: React.FC <Props> = (props) => {
+const ProdutoScreen: React.FC <Props> = (props) => {
 
     
 
@@ -116,4 +116,4 @@ const Produto: React.FC <Props> = (props) => {
         )
 }
 
-export default Produto
+export default ProdutoScreen

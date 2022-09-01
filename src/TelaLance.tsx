@@ -1,9 +1,10 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react";
-import {SafeAreaView, TextInput, View, Text, TouchableOpacity, StyleSheet, Image, Alert, TextInputComponent, } from "react-native";
+import React, { useMemo, useState } from "react";
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image, } from "react-native";
 import { StackParams } from "../App";
-import Logo1  from '../assets/Logo.png';
 import CountDown from 'react-native-countdown-component'
+import Produto from "./model/Produto";
+import Leilao from "./model/Leilao";
 
 
 const styles = StyleSheet.create({
@@ -19,19 +20,24 @@ const styles = StyleSheet.create({
 
     },
 
-    image: {
-        
-        width:400,
-        height:130,
+    card:{
+        width: 400,
         marginTop:5,
         borderColor: 'black',
         borderRadius:10,
         flex: 1,
-        paddingTop: 10,
-        backgroundColor: '#ecf0f1', 
-        
-        
-        
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: '#ffffff',
+    },
+
+    imageContainer:{
+        width:400,
+        height:400,
+    },
+
+    image: {
+        flex: 1,
     },
 
     input: {
@@ -93,6 +99,7 @@ type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 const TelaLance: React.FC<Props> = (props) => {
     
     const [lanceEnviado, setLanceEnviado] = useState('');
+
     
 
     const botaoDarLance = () => {
@@ -100,17 +107,35 @@ const TelaLance: React.FC<Props> = (props) => {
          
     }
 
-   
+    const [leilao, setLeilao] = useState<Leilao>({
+		id: 1,
+		id_produto: 3,
+		preco_minimo: 100,
+		inicio: new Date("2022-08-25-00:00:000+3"),
+		termino: new Date("2022-08-30-00:00:000+3"),
+	});
+    
+    const [produto, setProduto] = useState<Produto>({
+        id: 1,
+        nome: 'Raveo Vitrola com USB' ,
+        preco: 100,
+        descricao: 'A vitrola Raveo Sonetto Wood é uma edição mais que especial, toda em madeira que proporciona momentos incríveis!',
+        imagem: 'https://m.media-amazon.com/images/I/61FkEZJAToL._AC_SX679_.jpg'
+    })
+
+    const segundosFaltantes = useMemo(() => {
+        return 60 //leilao.termino.getTime() - (new Date().getTime());
+    }, [leilao]);
 
     return (
             <View style={styles.container}>
-                <Text style={styles.titulo}>Titulo do Produto</Text>
+                <Text style={styles.titulo}>{produto.nome}</Text>
 
-                <View style={styles.containerImagem}>
-                    <Image style={styles.image} source = {Logo1} />
-                    <View>
-                        <Text>Descrição do Produto!</Text>
-                    </View>                  
+                <View style={styles.card}>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} resizeMode='contain' source={{uri: produto.imagem}} />
+                    </View>
+                    <Text>{produto.descricao}</Text>           
                 </View>
 
                 <Text style={styles.texto}>Ultimo lance foi realizado na data 'x' no valor de: </Text>
@@ -120,7 +145,7 @@ const TelaLance: React.FC<Props> = (props) => {
                     
                     
                     <Text style={styles.texto}>Leilão Termina em:</Text>
-                    <CountDown until={60}
+                    <CountDown until={segundosFaltantes}
                         timeToShow={['D', 'H', 'M', 'S']}
                         timeLabels={{d: 'Dias', h: 'Horas', m: 'Minutos', s: 'Segundos'}}
                         onFinish={() => alert('Terminado!')}
