@@ -1,10 +1,12 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { TextInput, View, Text, TouchableOpacity, StyleSheet, Image, } from "react-native";
 import { StackParams } from "../App";
 import CountDown from 'react-native-countdown-component'
 import Produto from "./model/Produto";
 import Leilao from "./model/Leilao";
+import LeiloesService from "./services/Leiloes";
+import ProdutosService from "./services/Produtos";
 
 
 const styles = StyleSheet.create({
@@ -97,10 +99,10 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 
 const TelaLance: React.FC<Props> = (props) => {
+
+    const [estaCarregando, setEstaCarregando] = useState(false);
     
     const [lanceEnviado, setLanceEnviado] = useState('');
-
-    
 
     const botaoDarLance = () => {
         alert ('Seu lançe foi registrado no valor de R$' + lanceEnviado)
@@ -111,8 +113,8 @@ const TelaLance: React.FC<Props> = (props) => {
 		id: 1,
 		id_produto: 3,
 		preco_minimo: 100,
-		inicio: new Date("2022-08-25-00:00:000+3"),
-		termino: new Date("2022-08-30-00:00:000+3"),
+		inicio: new Date("2022-09-02T00:00:00-03:00"),
+		termino: new Date("2022-09-02T23:59:00-03:00"),
 	});
     
     const [produto, setProduto] = useState<Produto>({
@@ -124,11 +126,42 @@ const TelaLance: React.FC<Props> = (props) => {
     })
 
     const segundosFaltantes = useMemo(() => {
-        return 60 //leilao.termino.getTime() - (new Date().getTime());
+        const agoraMilisegundos = new Date().getTime();
+        const terminoMilisegundos = leilao.termino.getTime();
+        const milisegundosFaltantes = terminoMilisegundos - agoraMilisegundos;
+        return milisegundosFaltantes/1000 ;
     }, [leilao]);
+
+
+    useEffect(() => {
+        setEstaCarregando(true);
+        LeiloesService.lerAtivo()
+        .then(leilao => {
+            setLeilao(leilao)
+            ProdutosService.ler(leilao.id_produto)
+            .then(produto => {
+                setProduto(produto);
+            })
+            .catch(error => {
+                alert(error);
+            })
+            .finally(() => {
+                setEstaCarregando(false);
+            });
+        })
+        .catch(error => {
+            alert(error);
+        })
+        .finally(() => {
+            setEstaCarregando(false);
+        });
+    }, []);
 
     return (
             <View style={styles.container}>
+                {(estaCarregando) && (
+                    <Text>Carregando...</Text>
+                )}
                 <Text style={styles.titulo}>{produto.nome}</Text>
 
                 <View style={styles.card}>

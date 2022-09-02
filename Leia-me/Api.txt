@@ -1,0 +1,61 @@
+GET /leiloes/ativo
+Requisicao:
+Corpo: vazio
+
+Resposta:
+Corpo: objeto do tipo Leilao
+[
+	{
+		"id": 1,
+		"id_produto": 3,
+		"preco_minimo": 100,
+		"inicio": "2022-08-25-00:00:000+3",
+		"termino": "2022-08-30-00:00:000+3"
+	}
+]
+
+Status:
+- 200: lido com sucesso
+- 401: sem leilao ativo
+- 400: falha na leitura
+
+--------
+
+GET /leiloes/:id/lances/mais_alto
+Requisicao
+Corpo: vazio
+
+Resposta
+Corpo: obejto do tipo Lance
+{
+	"id": 1,
+	"id_leilao": 1,
+	"id_usuario": 1,
+	"preco": 101,
+	"tempo": "2022-08-25-01:00:000+3"
+}
+Status:
+- 200: lido com sucesso
+- 401: leilão sem lance mais alto
+- 400: falha na leitura
+
+--------
+
+POST /leiloes/:id/lances
+
+Requisicao
+Parametros:
+- id: o id do leilão
+Corpo: objeto do tipo Lance
+{
+	"id_leilao": 1,
+	"id_usuario": 1,
+	"preco": 101,
+}
+
+Resposta:
+Corpo: vazio
+Status:
+- 201: criado com sucesso
+- 401: leilao inexistente
+- 400: falha na criação
