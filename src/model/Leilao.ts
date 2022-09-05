@@ -4,6 +4,7 @@ type Leilao = {
     preco_minimo: number;
     inicio: Date;
     termino: Date;
+    lance_arremate:number;
 };
 
 export default Leilao;

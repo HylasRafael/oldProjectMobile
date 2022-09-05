@@ -17,9 +17,7 @@ const styles = StyleSheet.create({
         flexGrow:1,
         justifyContent:'center',
         padding:32,
-        backgroundColor:'#EAE5DB',
-        
-
+        backgroundColor:'#EAE5DB', 
     },
 
     card:{
@@ -71,13 +69,12 @@ const styles = StyleSheet.create({
         color: 'black',
     },
 
-    titulo:{        
+    titulo:{
         fontSize: 19,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'black',
-        
+        color: 'black',        
     },
     
     timerTitulo:{
@@ -99,7 +96,6 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 
 const TelaLance: React.FC<Props> = (props) => {
-
     const [estaCarregando, setEstaCarregando] = useState(false);
     
     const [lanceEnviado, setLanceEnviado] = useState('');
@@ -111,10 +107,11 @@ const TelaLance: React.FC<Props> = (props) => {
 
     const [leilao, setLeilao] = useState<Leilao>({
 		id: 1,
-		id_produto: 3,
+		id_produto: 1,
 		preco_minimo: 100,
 		inicio: new Date("2022-09-02T00:00:00-03:00"),
-		termino: new Date("2022-09-02T23:59:00-03:00"),
+		termino: new Date("2022-09-05T23:59:00-03:00"),
+        lance_arremate: 1000,
 	});
     
     const [produto, setProduto] = useState<Produto>({
@@ -168,8 +165,8 @@ const TelaLance: React.FC<Props> = (props) => {
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} resizeMode='contain' source={{uri: produto.imagem}} />
                     </View>
-                    <Text>{produto.descricao}</Text>           
-                </View>
+                        <Text>{produto.descricao}</Text>
+                    </View>
 
                 <Text style={styles.texto}>Ultimo lance foi realizado na data 'x' no valor de: </Text>
                 <Text style={styles.texto}>R${lanceEnviado}</Text>
@@ -181,10 +178,7 @@ const TelaLance: React.FC<Props> = (props) => {
                     <CountDown until={segundosFaltantes}
                         timeToShow={['D', 'H', 'M', 'S']}
                         timeLabels={{d: 'Dias', h: 'Horas', m: 'Minutos', s: 'Segundos'}}
-                        onFinish={() => alert('Terminado!')}
-
-                        //pegar a hora atual e subitrair do total estipulado
-                        
+                        onFinish={() => alert('Terminado!')}                        
                     />
                     
                 </View>
