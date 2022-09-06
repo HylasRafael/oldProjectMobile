@@ -7,6 +7,7 @@ import Produto from "./model/Produto";
 import Leilao from "./model/Leilao";
 import LeiloesService from "./services/Leiloes";
 import ProdutosService from "./services/Produtos";
+import Lance from "./model/Lance";
 
 
 const styles = StyleSheet.create({
@@ -98,6 +99,7 @@ type Props = NativeStackScreenProps < StackParams,'TelaLance'>;
 const TelaLance: React.FC<Props> = (props) => {
     const [estaCarregando, setEstaCarregando] = useState(false);
     
+    const [lanceMaisAlto, setLanceMaisAlto] = useState<Lance>();
     const [lanceEnviado, setLanceEnviado] = useState('');
 
     const botaoDarLance = () => {
@@ -145,6 +147,16 @@ const TelaLance: React.FC<Props> = (props) => {
             .finally(() => {
                 setEstaCarregando(false);
             });
+
+            if (leilao.id) {
+                LeiloesService.lerLanceMaisAlto(leilao.id)
+                .then((lance) => {
+                    setLanceMaisAlto(lance)
+                })
+                .catch((error) => {
+                    //TODO: Mostrar mensagem de erro.
+                })
+            }
         })
         .catch(error => {
             alert(error);
@@ -165,11 +177,11 @@ const TelaLance: React.FC<Props> = (props) => {
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} resizeMode='contain' source={{uri: produto.imagem}} />
                     </View>
-                        <Text>{produto.descricao}</Text>
-                    </View>
+                    <Text>{produto.descricao}</Text>
+                </View>
 
-                <Text style={styles.texto}>Ultimo lance foi realizado na data 'x' no valor de: </Text>
-                <Text style={styles.texto}>R${lanceEnviado}</Text>
+                <Text style={styles.texto}>Ultimo lance foi realizado na data {(lanceMaisAlto) ? (lanceMaisAlto?.tempo.toString()) : (leilao.inicio.toString())} no valor de:</Text>
+                <Text style={styles.texto}>R${(lanceMaisAlto) ? (lanceMaisAlto?.preco) : (leilao.preco_minimo)}</Text>
 
                 <View style={styles.timer}>                    
                     

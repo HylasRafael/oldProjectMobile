@@ -1,9 +1,11 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image  } from "react-native";
 import { StackParams } from "../App";
 import Logo1  from '../assets/Logo.png';
 import Produto from "./model/Produto";
+import Produtos from "./services/Produtos";
 
 const styles = StyleSheet.create({
     container:{
@@ -87,10 +89,22 @@ const styles = StyleSheet.create({
     }
 });
 
-type Props = NativeStackScreenProps < StackParams,'Produto'>;
+type Props = NativeStackScreenProps <StackParams,'Produto'>;
 
 
-const ProdutoScreen: React.FC <Props> = (props) => {
+const ProdutoScreen: React.FC<Props> = (props) => {
+
+    /*
+    ler: (id: number, callback: (produto?: Produto) => void) => {
+        axios.get<Produto>(`'http://10.60.46.43:4000/produtos'${id}`)
+        .then((resp) => {
+            const produtoItem: Produto = resp.data
+            callback(produtoItem)
+    */
+
+    useEffect (() => {
+
+    })
 
     const [produto, setProduto] = useState<Produto>({
         id: 1,
