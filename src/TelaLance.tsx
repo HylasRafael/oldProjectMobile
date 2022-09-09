@@ -127,17 +127,13 @@ const TelaLance: React.FC<Props> = (props) => {
         .then(res => {
             if (res.status === 201) {
                 //alert ('Lance Enviado')
-                Api.get<Lance>(`/leiloes/${leilao?.id}/lances/mais_alto`)
-                .then((res) => {
-                    if (res.status === 200) {
-                        //alert(res.data.preco)
-                        setLanceMaisAlto(res.data)
-                    } else {
-                        alert('ERRO#1: Tente novamente')
-                    }
+                LeiloesService.lerLanceMaisAlto(leilao?.id!)
+                .then((lance) => {
+                    setLanceMaisAlto(lance)
+                    setNovoLance(0)
                 })
                 .catch((erro) => {
-                    alert ('ERRO#2: Tente novamente')
+                    alert (erro)
                 });
             }
 
@@ -200,7 +196,7 @@ const TelaLance: React.FC<Props> = (props) => {
     }, []);
 
     const botaoDisabled = useMemo(() => {
-        return (novoLance < (lanceMaisAlto?.preco ?? 0))
+        return (novoLance <= (lanceMaisAlto?.preco ?? 0))
     }, [novoLance, lanceMaisAlto]);
 
     return (
