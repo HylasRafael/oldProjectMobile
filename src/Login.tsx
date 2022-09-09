@@ -125,12 +125,14 @@ const Login: React.FC <Props>  = (props) => {
          const servidorLoginSucesso = ((email === 'Admin') && (senha === '123'));
          const usuarioLogado: Usuario = ((email === 'Admin') && (senha === '123')) ? {
             nome: 'Administrador',
+            sobrenome: 'teste',
             email: "Admin",
             senha: "123",
             cpf: "12345678900",
             isAdmin: true
         } : {
             nome: 'Jose Paulo',
+            sobrenome: 'teste',
             email: "User",
             senha: "123",
             cpf: "12345678900",
