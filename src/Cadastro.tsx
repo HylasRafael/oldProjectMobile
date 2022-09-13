@@ -88,12 +88,12 @@ const Cadastro: React.FC <Props> = (props) => {
                 const botaoCadastro = () => {   
                     const usuario = { 
                         nome: nome,
-                        email: email,
-                        senha: senha,
-                        confirmasenha: ConfirmaSenha,
-                        cpf: cpf,
-                        admin: admin,
                         sobrenome: sobrenome,
+                        cpf: cpf,
+                        email: email,                        
+                        senha: senha,
+                        confirmasenha: ConfirmaSenha,                        
+                        admin: admin,                        
                         id: id,
                     }
                 

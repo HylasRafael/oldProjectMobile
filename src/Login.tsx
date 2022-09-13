@@ -184,7 +184,7 @@ const Login: React.FC <Props>  = (props) => {
                 </View>
 
                 <TextInput style={styles.input} placeholder='E-Mail' onChangeText={setEmail}/>
-                <TextInput style={styles.input} placeholder='Senha' onChangeText={setSenha}/>
+                <TextInput style={styles.input} placeholder='Senha' onChangeText={setSenha} secureTextEntry={true}/>
 
                 <View>
                     <TouchableOpacity style ={styles.recSenha} onPress={ botaoRecuperarSenha }>Esqueci Minha Senha</TouchableOpacity>

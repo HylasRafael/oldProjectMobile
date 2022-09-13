@@ -8,7 +8,7 @@ import Leilao from "./model/Leilao";
 import LeiloesService from "./services/Leiloes";
 import ProdutosService from "./services/Produtos";
 import Lance from "./model/Lance";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import Api from "./services/Api";
 import CurrencyInput from "react-native-currency-input";
 
@@ -119,14 +119,20 @@ const TelaLance: React.FC<Props> = (props) => {
     const botaoDarLance = () => {
         const Lance = {            
             id_leilao: leilao?.id,
-            id_usuario: 6,
+            id_usuario: 17,
             preco: novoLance,   
         };
+
+        const config: AxiosRequestConfig = {
+            headers: {
+                token: '17'
+            }
+        }
     
-        Api.post('/lances',Lance)
+        Api.post('/lances', Lance, config)
         .then(res => {
             if (res.status === 201) {
-                //alert ('Lance Enviado')
+                alert ('Lance Enviado')
                 LeiloesService.lerLanceMaisAlto(leilao?.id!)
                 .then((lance) => {
                     setLanceMaisAlto(lance)
